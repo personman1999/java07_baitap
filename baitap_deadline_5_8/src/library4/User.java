@@ -3,45 +3,34 @@ package library4;
 import java.util.ArrayList;
 import java.util.List;
 
-class User {
-    private String userId;
+public class User {
+    private int userId;
     private String name;
-    private List<Book> borrowedBooks;
+    protected List<Book> borrowed_books;
 
-    public User(String userId, String name) {
-        this.userId = userId;
-        this.name = name;
-        this.borrowedBooks = new ArrayList<>();
+    public User() {
+        this.borrowed_books = new ArrayList<>();
     }
 
     public void borrow(Book book) {
-        borrowedBooks.add(book);
+        borrowed_books.add(book);
         System.out.println(name + " đã mượn sách: " + book.title);
     }
 
     public void returnBook(Book book) {
-        if (borrowedBooks.remove(book)) {
+        if (borrowed_books.contains(book)) {
+            borrowed_books.remove(book);
             System.out.println(name + " đã trả sách: " + book.title);
         } else {
-            System.out.println("Sách không được tìm thấy trong danh sách mượn.");
+            System.out.println("Sách '" + book.title + "' không có trong danh sách đã mượn.");
         }
     }
 
-    public void displayInfo() {
-        System.out.println("User ID: " + userId);
-        System.out.println("Name: " + name);
-        System.out.println("Borrowed Books: ");
-        for (Book book : borrowedBooks) {
-            book.displayInfo();
-            System.out.println();
-        }
-    }
-
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
@@ -53,11 +42,11 @@ class User {
         this.name = name;
     }
 
-    public List<Book> getBorrowedBooks() {
-        return borrowedBooks;
+    public List<Book> getBorrowed_books() {
+        return borrowed_books;
     }
 
-    public void setBorrowedBooks(List<Book> borrowedBooks) {
-        this.borrowedBooks = borrowedBooks;
+    public void setBorrowed_books(List<Book> borrowed_books) {
+        this.borrowed_books = borrowed_books;
     }
 }

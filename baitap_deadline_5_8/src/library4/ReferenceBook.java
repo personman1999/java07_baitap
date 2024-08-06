@@ -1,16 +1,21 @@
 package library4;
 
-class ReferenceBook extends Book {
+public class ReferenceBook extends Book {
     private String field;
-
-    public ReferenceBook(String title, String author, String isbn, String field) {
-        super(title, author, isbn);
-        this.field = field;
-    }
 
     @Override
     public void displayInfo() {
         super.displayInfo();
         System.out.println("Field: " + field);
     }
+
+    public String getField() {
+        return field;
+    }
+
+    public void setField(String field) {
+        this.field = field;
+    }
+
+
 }
